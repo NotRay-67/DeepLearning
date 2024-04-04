@@ -141,3 +141,23 @@ print('Label: ', labels[5])
 ```
 These lines display two images from the batch along with their labels.
 
+### Model Building
+
+```python
+
+model = keras.Sequential([
+keras.layers.InputLayer(input_shape=(IMG_HEIGHT, IMG_WIDTH, 3)),
+keras.layers.Conv2D(64, (3, 3), activation='relu'),
+keras.layers.MaxPooling2D((2, 2)),
+keras.layers.Conv2D(128, (3, 3), activation='relu'),
+keras.layers.MaxPooling2D((2, 2)),
+keras.layers.Conv2D(256, (3, 3), activation='relu'),
+keras.layers.MaxPooling2D((2, 2)),
+keras.layers.Conv2D(512, (3, 3), activation='relu'),
+keras.layers.GlobalAveragePooling2D(),
+keras.layers.Dense(1, activation='sigmoid')
+])
+model.summary()
+
+```
+This part builds the neural network model using Keras' Sequential API. It consists of convolutional layers followed by max-pooling layers for feature extraction and downsampling. Finally, it includes a global average pooling layer and a dense layer with a sigmoid activation function for binary classification.
