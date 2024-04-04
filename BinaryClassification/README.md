@@ -172,5 +172,15 @@ epochs=15
 history = model.fit(trainDataset, epochs=epochs, validation_data=(valDataset))
 ```
 This segment compiles the model using binary cross-entropy loss and the Adam optimizer. It then trains the model on the training dataset for a specified number of epochs while using the validation dataset for validation during training.
-python
 
+### Model Visualization
+
+```python
+plt.plot(history.history['accuracy'])
+plt.plot(history.history['val_accuracy'])
+plt.xlabel('Epoch')
+plt.ylabel('Accuracy')
+plt.legend(['Training', 'Validation'])
+plt.show()
+```
+This section plots the training and validation accuracies over epochs to visualize the model's training performance.
