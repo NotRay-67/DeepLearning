@@ -122,3 +122,10 @@ target_size=(IMG_HEIGHT,IMG_WIDTH)
 ```
 This section preprocesses the images. It defines batch size and image dimensions. ImageDataGenerator objects are created for training, validation, and test sets to rescale images. Then, the `flow_from_dataframe()` method is used to convert dataframes into datasets, specifying parameters like batch size, target size, and column names for images and labels.
 
+### 
+```python
+images, labels = next(iter(testDataset))
+print('Batch shape: ', images.shape)
+print('Label shape: ', labels.shape)
+```
+This line extracts a batch of images and their labels from the test dataset using the `next()` and `iter()` functions, then prints their shapes.
