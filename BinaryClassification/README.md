@@ -39,3 +39,42 @@ files.upload()
 print('There are {} images in the dataset'.format(len(glob.glob('/content/Cat-Dog/images/*.jpg'))))
 ```
 This part downloads a dataset from Kaggle using the Kaggle API. It creates a Kaggle directory, uploads Kaggle API credentials, downloads the dataset, and extracts it to the "Cat-Dog" directory. It then prints the number of images in the dataset.
+
+### 
+```python
+CATS = ['Abyssinian', 'Bengal', 'Birman', 'Bombay', 'British_Shorthair', 'Egyptian_Mau', 'Maine_Coon', 'Persian', 'Ragdoll', 'Russian_Blue', 'Siamese', 'Sphynx']
+cats_images = []
+dogs_images = []
+for img in glob.glob('/content/Cat-Dog/images/*.jpg'):
+  if any(cat in img for cat in CATS):
+    cats_images.append(img)
+  else:
+    dogs_images.append(img)
+print('There are {} images of cats'.format(len(cats_images)))
+print('There are {} images of dogs'.format(len(dogs_images)))
+```
+This code segment categorizes images into cats and dogs based on their file names. It prints the number of images for each category.
+
+### 
+```python
+np.random.shuffle(cats_images)
+np.random.shuffle(dogs_images)
+#split the data into train, validation and test sets
+train_d, val_d, test_d = np.split(dogs_images, [int(len(dogs_images)*0.7), int(len(dogs_images)*0.8)])
+train_c, val_c, test_c = np.split(cats_images, [int(len(cats_images)*0.7), int(len(cats_images)*0.8)])
+train_dog_df = pd.DataFrame({'image':train_d, 'label':'dog'})
+val_dog_df = pd.DataFrame({'image':val_d, 'label':'dog'})
+test_dog_df = pd.DataFrame({'image':test_d, 'label':'dog'})
+train_cat_df = pd.DataFrame({'image':train_c, 'label':'cat'})
+val_cat_df = pd.DataFrame({'image':val_c, 'label':'cat'})
+test_cat_df = pd.DataFrame({'image':test_c, 'label':'cat'})
+train_df = pd.concat([train_dog_df, train_cat_df])
+val_df = pd.concat([val_dog_df, val_cat_df])
+test_df = pd.concat([test_dog_df, test_cat_df])
+print('There are {} images for training'.format(len(train_df)))
+print('There are {} images for validation'.format(len(val_df)))
+print('There are {} images for testing'.format(len(test_df)))
+
+```
+This part shuffles the lists of cat and dog images, then splits them into training, validation, and test sets. Dataframes are created from these splits, with image paths and labels ('dog' or 'cat'). Finally, it prints the number of images in each split.
+
