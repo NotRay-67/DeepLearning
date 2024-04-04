@@ -38,4 +38,4 @@ files.upload()
 !unzip /content/the-oxfordiiit-pet-dataset.zip -d Cat-Dog
 print('There are {} images in the dataset'.format(len(glob.glob('/content/Cat-Dog/images/*.jpg'))))
 ```
-
+This part downloads a dataset from Kaggle using the Kaggle API. It creates a Kaggle directory, uploads Kaggle API credentials, downloads the dataset, and extracts it to the "Cat-Dog" directory. It then prints the number of images in the dataset.
