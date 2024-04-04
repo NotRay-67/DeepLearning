@@ -129,3 +129,15 @@ print('Batch shape: ', images.shape)
 print('Label shape: ', labels.shape)
 ```
 This line extracts a batch of images and their labels from the test dataset using the `next()` and `iter()` functions, then prints their shapes.
+
+###
+
+```python
+plt.imshow(images[3])
+print('Label: ', labels[3])
+
+plt.imshow(images[5])
+print('Label: ', labels[5])
+```
+These lines display two images from the batch along with their labels.
+
