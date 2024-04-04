@@ -22,6 +22,7 @@ import tensorflow as tf
 from tensorflow import keras
 from keras.preprocessing.image import ImageDataGenerator
 ```
+These lines import required libraries and modules, including pandas for data manipulation, glob for file searching, matplotlib for plotting, numpy for numerical computations, TensorFlow for deep learning, and Keras for building neural network models. The ImageDataGenerator from Keras is imported to generate batches of augmented data from image files.
 
 ### Getting the Data:
 
