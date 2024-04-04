@@ -7,7 +7,6 @@ This project implements a deep learning model for binary classification of cat a
 
 ### Importing Necessary Libraries:
 ```python
-#import the necessary packages
 import pandas as pd
 import glob
 import matplotlib.pyplot as plt
@@ -15,4 +14,19 @@ import numpy as np
 import tensorflow as tf
 from tensorflow import keras
 from keras.preprocessing.image import ImageDataGenerator
+```
+
+### Getting the Data:
+
+```python
+from google.colab import files
+files.upload()
+
+! mkdir ~/.kaggle
+! cp kaggle.json ~/.kaggle/
+! chmod 600 ~/.kaggle/kaggle.json
+
+!kaggle datasets download -d tanlikesmath/the-oxfordiiit-pet-dataset
+!unzip /content/the-oxfordiiit-pet-dataset.zip -d Cat-Dog
+print('There are {} images in the dataset'.format(len(glob.glob('/content/Cat-Dog/images/*.jpg'))))
 ```
