@@ -161,3 +161,16 @@ model.summary()
 
 ```
 This part builds the neural network model using Keras' Sequential API. It consists of convolutional layers followed by max-pooling layers for feature extraction and downsampling. Finally, it includes a global average pooling layer and a dense layer with a sigmoid activation function for binary classification.
+
+### Model Training
+
+```python
+#compile the model
+model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
+epochs=15
+#train the model
+history = model.fit(trainDataset, epochs=epochs, validation_data=(valDataset))
+```
+This segment compiles the model using binary cross-entropy loss and the Adam optimizer. It then trains the model on the training dataset for a specified number of epochs while using the validation dataset for validation during training.
+python
+
