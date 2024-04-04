@@ -78,3 +78,47 @@ print('There are {} images for testing'.format(len(test_df)))
 ```
 This part shuffles the lists of cat and dog images, then splits them into training, validation, and test sets. Dataframes are created from these splits, with image paths and labels ('dog' or 'cat'). Finally, it prints the number of images in each split.
 
+### Data Preproccesing
+```python
+BATCH_SIZE = 32
+IMG_HEIGHT = 224
+IMG_WIDTH = 224
+#rescale the images
+trainGenerator = ImageDataGenerator(rescale=1./255.)
+valGenerator = ImageDataGenerator(rescale=1./255.)
+testGenerator = ImageDataGenerator(rescale=1./255.)
+#convert them into a dataset
+trainDataset = trainGenerator.flow_from_dataframe(
+dataframe=train_df,
+class_mode="binary",
+x_col="image",
+y_col="label",
+batch_size=BATCH_SIZE,
+seed=42,
+shuffle=True,
+target_size=(IMG_HEIGHT,IMG_WIDTH) #set the height and width of the images
+)
+valDataset = valGenerator.flow_from_dataframe(
+dataframe=val_df,
+class_mode='binary',
+x_col="image",
+y_col="label",
+batch_size=BATCH_SIZE,
+seed=42,
+shuffle=True,
+target_size=(IMG_HEIGHT,IMG_WIDTH)
+)
+testDataset = testGenerator.flow_from_dataframe(
+dataframe=test_df,
+class_mode='binary',
+x_col="image",
+y_col="label",
+batch_size=BATCH_SIZE,
+seed=42,
+shuffle=True,
+target_size=(IMG_HEIGHT,IMG_WIDTH)
+)
+
+```
+This section preprocesses the images. It defines batch size and image dimensions. ImageDataGenerator objects are created for training, validation, and test sets to rescale images. Then, the `flow_from_dataframe()` method is used to convert dataframes into datasets, specifying parameters like batch size, target size, and column names for images and labels.
+
