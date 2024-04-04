@@ -184,3 +184,15 @@ plt.legend(['Training', 'Validation'])
 plt.show()
 ```
 This section plots the training and validation accuracies over epochs to visualize the model's training performance.
+
+### Model Evaluation
+```python
+#evaluate the model on the test dataset
+loss, acc = model.evaluate(testDataset)
+
+print('Loss:', loss)
+print('Accuracy:', acc)
+img = plt.imread('/content/dog_image.jpeg')
+plt.imshow(img)
+```
+This part evaluates the trained model on the test dataset and prints the loss and accuracy. the last two line loads and displays an image named "dog_image.jpeg".
