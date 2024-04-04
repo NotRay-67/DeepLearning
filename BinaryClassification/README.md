@@ -55,7 +55,8 @@ print('There are {} images of dogs'.format(len(dogs_images)))
 ```
 This code segment categorizes images into cats and dogs based on their file names. It prints the number of images for each category.
 
-### 
+### Data Splitting
+
 ```python
 np.random.shuffle(cats_images)
 np.random.shuffle(dogs_images)
